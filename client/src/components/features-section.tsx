@@ -12,8 +12,6 @@ export function FeaturesSection() {
       title: "Predictive Maintenance",
       description:
         "AI algorithms predict equipment failures before they happen, reducing downtime by 40% and maintenance costs by 25%.",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
       healthMetric: { label: "HVAC Health", value: 94 },
       delay: "0.3s",
     },
@@ -22,8 +20,6 @@ export function FeaturesSection() {
       title: "Dynamic Pricing",
       description:
         "Real-time market analysis and ML models optimize rental prices, increasing revenue by up to 18% while maintaining high occupancy.",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
       pricingData: { current: "$3,850", change: "+12%" },
       delay: "0.5s",
     },
@@ -32,8 +28,6 @@ export function FeaturesSection() {
       title: "Portfolio Analytics",
       description:
         "Comprehensive dashboards provide deep insights into portfolio performance, tenant behavior, and market trends.",
-      image:
-        "https://images.unsplash.com/photo-1590479773265-7464e5d48118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
       analytics: {
         occupancy: "97.2%",
         revenue: "$2.8M",
@@ -76,11 +70,56 @@ export function FeaturesSection() {
                 style={{ animationDelay: feature.delay }}
               >
                 <CardContent className="p-8">
-                  <img
-                    src={feature.image}
-                    alt={`${feature.title} analytics dashboard`}
-                    className="w-full h-48 object-cover rounded-xl mb-6 hover:scale-105 transition-transform duration-300"
-                  />
+                  {/* Custom UI Visual */}
+                  <div className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl mb-6 hover:scale-105 transition-transform duration-300 relative overflow-hidden">
+                    <svg className="w-full h-full" viewBox="0 0 320 192" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#f9fafb" />
+                          <stop offset="100%" stopColor="#e5e7eb" />
+                        </linearGradient>
+                      </defs>
+                      <rect width="100%" height="100%" fill={`url(#gradient-${index})`} />
+                      
+                      {/* Feature-specific graphics */}
+                      {feature.title === "Predictive Maintenance" && (
+                        <g>
+                          <rect x="40" y="40" width="240" height="112" rx="8" fill="#fff" stroke="#e5e7eb" strokeWidth="2" />
+                          <rect x="60" y="60" width="200" height="8" rx="4" fill="#000" opacity="0.8" />
+                          <rect x="60" y="80" width="150" height="8" rx="4" fill="#6b7280" />
+                          <rect x="60" y="100" width="180" height="8" rx="4" fill="#9ca3af" />
+                          <circle cx="250" cy="120" r="8" fill="#10b981" />
+                          <text x="250" y="125" textAnchor="middle" fontSize="10" fill="#fff" fontWeight="bold">94%</text>
+                        </g>
+                      )}
+                      
+                      {feature.title === "Dynamic Pricing" && (
+                        <g>
+                          <rect x="40" y="40" width="240" height="112" rx="8" fill="#fff" stroke="#e5e7eb" strokeWidth="2" />
+                          <polyline points="60,130 100,100 140,110 180,80 220,90 260,60" fill="none" stroke="#000" strokeWidth="3" />
+                          <circle cx="60" cy="130" r="3" fill="#000" />
+                          <circle cx="100" cy="100" r="3" fill="#000" />
+                          <circle cx="140" cy="110" r="3" fill="#000" />
+                          <circle cx="180" cy="80" r="3" fill="#000" />
+                          <circle cx="220" cy="90" r="3" fill="#000" />
+                          <circle cx="260" cy="60" r="3" fill="#000" />
+                          <text x="160" y="50" textAnchor="middle" fontSize="12" fill="#000" fontWeight="bold">$3,850</text>
+                          <text x="200" y="50" fontSize="10" fill="#10b981" fontWeight="bold">+12%</text>
+                        </g>
+                      )}
+                      
+                      {feature.title === "Portfolio Analytics" && (
+                        <g>
+                          <rect x="40" y="40" width="240" height="112" rx="8" fill="#fff" stroke="#e5e7eb" strokeWidth="2" />
+                          <rect x="60" y="60" width="40" height="80" fill="#000" opacity="0.8" />
+                          <rect x="110" y="80" width="40" height="60" fill="#374151" />
+                          <rect x="160" y="70" width="40" height="70" fill="#6b7280" />
+                          <rect x="210" y="90" width="40" height="50" fill="#9ca3af" />
+                          <text x="160" y="35" textAnchor="middle" fontSize="10" fill="#000" fontWeight="bold">Analytics Dashboard</text>
+                        </g>
+                      )}
+                    </svg>
+                  </div>
 
                   <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-white" />

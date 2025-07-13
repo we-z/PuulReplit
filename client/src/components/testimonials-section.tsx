@@ -14,24 +14,24 @@ export function TestimonialsSection() {
         "Puul's AI has revolutionized our maintenance operations. We've reduced emergency repairs by 60% and our tenants couldn't be happier.",
       author: "Sarah Chen",
       position: "VP of Operations, Metropolitan Properties",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+      initials: "SC",
+      bgColor: "bg-gray-800",
     },
     {
       quote:
         "The dynamic pricing feature increased our portfolio revenue by 22% in just six months. The ROI is incredible.",
       author: "Michael Rodriguez",
       position: "Portfolio Manager, Urban Living Corp",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+      initials: "MR",
+      bgColor: "bg-gray-700",
     },
     {
       quote:
         "The real-time analytics dashboard gives us insights we never had before. Data-driven decisions are now the norm.",
       author: "Emma Thompson",
       position: "Regional Director, Prime Real Estate",
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&h=200",
+      initials: "ET",
+      bgColor: "bg-gray-900",
     },
   ];
 
@@ -91,11 +91,11 @@ export function TestimonialsSection() {
                 >
                   <CardContent className="p-8 md:p-12">
                     <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
-                      <img
-                        src={testimonial.image}
-                        alt={`${testimonial.author} - ${testimonial.position}`}
-                        className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg hover:scale-105 transition-transform duration-300"
-                      />
+                      <div className={`w-24 h-24 rounded-full ${testimonial.bgColor} border-4 border-white shadow-lg hover:scale-105 transition-transform duration-300 flex items-center justify-center`}>
+                        <span className="text-white text-xl font-bold">
+                          {testimonial.initials}
+                        </span>
+                      </div>
                       <div className="text-center md:text-left">
                         <blockquote className="text-xl md:text-2xl text-black mb-6 font-medium">
                           "{testimonial.quote}"

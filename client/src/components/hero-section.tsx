@@ -18,11 +18,21 @@ export function HeroSection() {
         className="absolute inset-0 parallax-element"
         style={{ transform: `translateY(${parallaxOffset}px)` }}
       >
-        <img
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
-          alt="Modern office building exterior"
-          className="w-full h-full object-cover opacity-5"
-        />
+        <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200">
+          <svg className="w-full h-full opacity-5" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#000" strokeWidth="1"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+            <circle cx="200" cy="150" r="3" fill="#000" opacity="0.3" />
+            <circle cx="800" cy="250" r="2" fill="#000" opacity="0.2" />
+            <circle cx="1000" cy="400" r="4" fill="#000" opacity="0.25" />
+            <rect x="300" y="500" width="20" height="20" fill="#000" opacity="0.15" transform="rotate(45 310 510)" />
+            <rect x="700" y="100" width="15" height="15" fill="#000" opacity="0.2" transform="rotate(45 707.5 107.5)" />
+          </svg>
+        </div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

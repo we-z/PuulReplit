@@ -11,11 +11,18 @@ export function CTASection() {
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
-        <img
-          src="https://images.unsplash.com/photo-1577495508048-b635879837f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
-          alt="Modern office building with geometric architecture"
-          className="w-full h-full object-cover"
-        />
+        <svg className="w-full h-full" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="cta-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
+              <rect width="60" height="60" fill="none" stroke="#fff" strokeWidth="0.5" opacity="0.3"/>
+              <circle cx="30" cy="30" r="1" fill="#fff" opacity="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#cta-pattern)" />
+          <polygon points="100,100 200,50 300,150 200,200" fill="#fff" opacity="0.05" />
+          <polygon points="800,200 900,100 1000,250 900,300" fill="#fff" opacity="0.05" />
+          <polygon points="600,400 700,350 800,450 700,500" fill="#fff" opacity="0.05" />
+        </svg>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
