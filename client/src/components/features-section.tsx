@@ -1,10 +1,12 @@
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useParallax } from "@/hooks/use-parallax";
 import { Card, CardContent } from "@/components/ui/card";
 import { Settings, TrendingUp, BarChart3 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 
 export function FeaturesSection() {
   const { ref, isVisible } = useIntersectionObserver();
+  const parallaxOffset = useParallax(0.3);
 
   const features = [
     {
@@ -12,6 +14,8 @@ export function FeaturesSection() {
       title: "Predictive Maintenance",
       description:
         "AI algorithms predict equipment failures before they happen, reducing downtime by 40% and maintenance costs by 25%.",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+      imageAlt: "Modern apartment building with glass balconies and smart maintenance systems",
       healthMetric: { label: "HVAC Health", value: 94 },
       delay: "0.3s",
     },
@@ -20,6 +24,8 @@ export function FeaturesSection() {
       title: "Dynamic Pricing",
       description:
         "Real-time market analysis and ML models optimize rental prices, increasing revenue by up to 18% while maintaining high occupancy.",
+      image: "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+      imageAlt: "Luxury high-rise apartments with city skyline view representing premium pricing",
       pricingData: { current: "$3,850", change: "+12%" },
       delay: "0.5s",
     },
@@ -28,6 +34,8 @@ export function FeaturesSection() {
       title: "Portfolio Analytics",
       description:
         "Comprehensive dashboards provide deep insights into portfolio performance, tenant behavior, and market trends.",
+      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400",
+      imageAlt: "Impressive skyscraper complex representing large property portfolio management",
       analytics: {
         occupancy: "97.2%",
         revenue: "$2.8M",
@@ -37,7 +45,18 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section ref={ref} className="py-20 bg-white" id="features">
+    <section ref={ref} className="py-20 bg-white relative overflow-hidden" id="features">
+      {/* Parallax Background */}
+      <div
+        className="absolute inset-0 parallax-element opacity-5"
+        style={{ transform: `translateY(${parallaxOffset}px)` }}
+      >
+        <img
+          src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
+          alt="Elegant residential complex aerial view"
+          className="w-full h-full object-cover"
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
@@ -70,55 +89,17 @@ export function FeaturesSection() {
                 style={{ animationDelay: feature.delay }}
               >
                 <CardContent className="p-8">
-                  {/* Custom UI Visual */}
-                  <div className="w-full h-48 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl mb-6 hover:scale-105 transition-transform duration-300 relative overflow-hidden">
-                    <svg className="w-full h-full" viewBox="0 0 320 192" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#f9fafb" />
-                          <stop offset="100%" stopColor="#e5e7eb" />
-                        </linearGradient>
-                      </defs>
-                      <rect width="100%" height="100%" fill={`url(#gradient-${index})`} />
-                      
-                      {/* Feature-specific graphics */}
-                      {feature.title === "Predictive Maintenance" && (
-                        <g>
-                          <rect x="40" y="40" width="240" height="112" rx="8" fill="#fff" stroke="#e5e7eb" strokeWidth="2" />
-                          <rect x="60" y="60" width="200" height="8" rx="4" fill="#000" opacity="0.8" />
-                          <rect x="60" y="80" width="150" height="8" rx="4" fill="#6b7280" />
-                          <rect x="60" y="100" width="180" height="8" rx="4" fill="#9ca3af" />
-                          <circle cx="250" cy="120" r="8" fill="#10b981" />
-                          <text x="250" y="125" textAnchor="middle" fontSize="10" fill="#fff" fontWeight="bold">94%</text>
-                        </g>
-                      )}
-                      
-                      {feature.title === "Dynamic Pricing" && (
-                        <g>
-                          <rect x="40" y="40" width="240" height="112" rx="8" fill="#fff" stroke="#e5e7eb" strokeWidth="2" />
-                          <polyline points="60,130 100,100 140,110 180,80 220,90 260,60" fill="none" stroke="#000" strokeWidth="3" />
-                          <circle cx="60" cy="130" r="3" fill="#000" />
-                          <circle cx="100" cy="100" r="3" fill="#000" />
-                          <circle cx="140" cy="110" r="3" fill="#000" />
-                          <circle cx="180" cy="80" r="3" fill="#000" />
-                          <circle cx="220" cy="90" r="3" fill="#000" />
-                          <circle cx="260" cy="60" r="3" fill="#000" />
-                          <text x="160" y="50" textAnchor="middle" fontSize="12" fill="#000" fontWeight="bold">$3,850</text>
-                          <text x="200" y="50" fontSize="10" fill="#10b981" fontWeight="bold">+12%</text>
-                        </g>
-                      )}
-                      
-                      {feature.title === "Portfolio Analytics" && (
-                        <g>
-                          <rect x="40" y="40" width="240" height="112" rx="8" fill="#fff" stroke="#e5e7eb" strokeWidth="2" />
-                          <rect x="60" y="60" width="40" height="80" fill="#000" opacity="0.8" />
-                          <rect x="110" y="80" width="40" height="60" fill="#374151" />
-                          <rect x="160" y="70" width="40" height="70" fill="#6b7280" />
-                          <rect x="210" y="90" width="40" height="50" fill="#9ca3af" />
-                          <text x="160" y="35" textAnchor="middle" fontSize="10" fill="#000" fontWeight="bold">Analytics Dashboard</text>
-                        </g>
-                      )}
-                    </svg>
+                  {/* Beautiful Property Image with Parallax */}
+                  <div className="w-full h-48 rounded-xl mb-6 relative overflow-hidden group">
+                    <img
+                      src={feature.image}
+                      alt={feature.imageAlt}
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 ease-out group-hover:brightness-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
+                      <Icon className="w-4 h-4 text-black" />
+                    </div>
                   </div>
 
                   <div className="w-12 h-12 bg-black rounded-xl flex items-center justify-center mb-4">

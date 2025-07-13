@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useParallax } from "@/hooks/use-parallax";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Zap } from "lucide-react";
 
 export function DashboardSection() {
   const { ref, isVisible } = useIntersectionObserver();
+  const parallaxOffset = useParallax(0.2);
   const revenueChartRef = useRef<HTMLCanvasElement>(null);
   const occupancyChartRef = useRef<HTMLCanvasElement>(null);
   const revenueChartInstance = useRef<any>(null);
@@ -125,7 +127,18 @@ export function DashboardSection() {
   }, []);
 
   return (
-    <section ref={ref} className="py-20 bg-gray-50" id="dashboard">
+    <section ref={ref} className="py-20 bg-gray-50 relative overflow-hidden" id="dashboard">
+      {/* Parallax Background */}
+      <div
+        className="absolute inset-0 parallax-element opacity-3"
+        style={{ transform: `translateY(${parallaxOffset}px)` }}
+      >
+        <img
+          src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
+          alt="Modern luxury apartment complex with smart building technology"
+          className="w-full h-full object-cover"
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2

@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useParallax } from "@/hooks/use-parallax";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export function TestimonialsSection() {
   const { ref, isVisible } = useIntersectionObserver();
+  const parallaxOffset = useParallax(0.15);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const testimonials = [
@@ -56,7 +58,18 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="py-20 bg-white" id="testimonials">
+    <section ref={ref} className="py-20 bg-white relative overflow-hidden" id="testimonials">
+      {/* Elegant Background with Parallax */}
+      <div
+        className="absolute inset-0 parallax-element opacity-5"
+        style={{ transform: `translateY(${parallaxOffset}px)` }}
+      >
+        <img
+          src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
+          alt="Elegant luxury condominium towers with landscaped grounds"
+          className="w-full h-full object-cover"
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2

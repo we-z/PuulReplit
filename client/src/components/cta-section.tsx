@@ -1,28 +1,35 @@
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { useParallax } from "@/hooks/use-parallax";
 import { Button } from "@/components/ui/button";
 
 export function CTASection() {
   const { ref, isVisible } = useIntersectionObserver();
+  const parallaxOffset = useParallax(0.4);
 
   return (
     <section
       ref={ref}
       className="py-20 bg-black text-white relative overflow-hidden"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="cta-pattern" width="60" height="60" patternUnits="userSpaceOnUse">
-              <rect width="60" height="60" fill="none" stroke="#fff" strokeWidth="0.5" opacity="0.3"/>
-              <circle cx="30" cy="30" r="1" fill="#fff" opacity="0.5"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#cta-pattern)" />
-          <polygon points="100,100 200,50 300,150 200,200" fill="#fff" opacity="0.05" />
-          <polygon points="800,200 900,100 1000,250 900,300" fill="#fff" opacity="0.05" />
-          <polygon points="600,400 700,350 800,450 700,500" fill="#fff" opacity="0.05" />
-        </svg>
+      {/* Beautiful Skyscraper Background with Parallax */}
+      <div 
+        className="absolute inset-0 parallax-element"
+        style={{ transform: `translateY(${parallaxOffset}px)` }}
+      >
+        <img
+          src="https://images.unsplash.com/photo-1577495508048-b635879837f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
+          alt="Magnificent downtown skyscrapers at twilight representing enterprise property management"
+          className="w-full h-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/20"></div>
+      </div>
+
+      {/* Floating geometric elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-16 h-16 border border-white/20 rotate-45 animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-12 h-12 bg-white/10 rounded-full animate-bounce" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-32 left-1/4 w-8 h-8 border border-white/30 rotate-12 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 right-1/3 w-6 h-6 bg-white/15 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
