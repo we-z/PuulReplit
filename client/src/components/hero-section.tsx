@@ -10,7 +10,7 @@ export function HeroSection() {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white pt-16"
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-50 to-white pt-32"
       id="hero"
     >
       {/* Background with parallax effect */}

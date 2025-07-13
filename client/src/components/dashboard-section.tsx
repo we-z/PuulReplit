@@ -8,6 +8,8 @@ export function DashboardSection() {
   const { ref, isVisible } = useIntersectionObserver();
   const revenueChartRef = useRef<HTMLCanvasElement>(null);
   const occupancyChartRef = useRef<HTMLCanvasElement>(null);
+  const revenueChartInstance = useRef<any>(null);
+  const occupancyChartInstance = useRef<any>(null);
   
   // Simulated real-time metrics
   const [metrics, setMetrics] = useState({
@@ -35,10 +37,18 @@ export function DashboardSection() {
   useEffect(() => {
     if (!isVisible) return;
 
+    // Destroy existing charts
+    if (revenueChartInstance.current) {
+      revenueChartInstance.current.destroy();
+    }
+    if (occupancyChartInstance.current) {
+      occupancyChartInstance.current.destroy();
+    }
+
     // Revenue Chart
     const revenueCtx = revenueChartRef.current?.getContext('2d');
     if (revenueCtx && window.Chart) {
-      new window.Chart(revenueCtx, {
+      revenueChartInstance.current = new window.Chart(revenueCtx, {
         type: 'line',
         data: {
           labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -73,7 +83,7 @@ export function DashboardSection() {
     // Occupancy Chart
     const occupancyCtx = occupancyChartRef.current?.getContext('2d');
     if (occupancyCtx && window.Chart) {
-      new window.Chart(occupancyCtx, {
+      occupancyChartInstance.current = new window.Chart(occupancyCtx, {
         type: 'doughnut',
         data: {
           labels: ['Studio', '1BR', '2BR', '3BR'],
@@ -92,6 +102,16 @@ export function DashboardSection() {
         }
       });
     }
+
+    // Cleanup function
+    return () => {
+      if (revenueChartInstance.current) {
+        revenueChartInstance.current.destroy();
+      }
+      if (occupancyChartInstance.current) {
+        occupancyChartInstance.current.destroy();
+      }
+    };
   }, [isVisible]);
 
   // Load Chart.js dynamically
@@ -245,33 +265,33 @@ export function DashboardSection() {
                   <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center mr-3">
                     <Zap className="w-4 h-4 text-white" />
                   </div>
-                  <h4 className="text-xl font-bold">AI Insights</h4>
+                  <h4 className="text-xl font-bold text-white">AI Insights</h4>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <Card className="bg-white/10 backdrop-blur border-0">
                     <CardContent className="p-4">
-                      <div className="text-sm text-gray-200 mb-1">
+                      <div className="text-sm text-gray-300 mb-1">
                         Predicted Maintenance
                       </div>
-                      <div className="font-semibold">
+                      <div className="font-semibold text-white">
                         Unit 4B HVAC service needed in 12 days
                       </div>
                     </CardContent>
                   </Card>
                   <Card className="bg-white/10 backdrop-blur border-0">
                     <CardContent className="p-4">
-                      <div className="text-sm text-gray-200 mb-1">
+                      <div className="text-sm text-gray-300 mb-1">
                         Pricing Opportunity
                       </div>
-                      <div className="font-semibold">
+                      <div className="font-semibold text-white">
                         Increase rates by 8% in Building C
                       </div>
                     </CardContent>
                   </Card>
                   <Card className="bg-white/10 backdrop-blur border-0">
                     <CardContent className="p-4">
-                      <div className="text-sm text-gray-200 mb-1">Market Alert</div>
-                      <div className="font-semibold">
+                      <div className="text-sm text-gray-300 mb-1">Market Alert</div>
+                      <div className="font-semibold text-white">
                         High demand period starting next week
                       </div>
                     </CardContent>
