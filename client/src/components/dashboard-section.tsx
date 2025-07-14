@@ -98,26 +98,33 @@ export function DashboardSection() {
             return (
               <Card
                 key={metric.title}
-                className={`${metric.bgColor} border-2 ${metric.borderColor} transition-all duration-300 hover:shadow-lg fade-in-up ${
+                className={`group ${metric.bgColor} border-2 ${metric.borderColor} transition-all duration-500 hover:shadow-2xl hover:scale-105 hover:-translate-y-2 cursor-pointer relative overflow-hidden fade-in-up ${
                   isVisible ? "visible" : ""
                 }`}
                 style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
-                <CardContent className="p-6">
+                <CardContent className="p-6 relative z-10">
+                  {/* Background glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
                   <div className="flex items-center justify-between mb-4">
-                    <Icon className={`w-8 h-8 ${metric.color}`} />
-                    <span className="text-sm font-medium text-green-600">
+                    <Icon className={`w-8 h-8 ${metric.color} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`} />
+                    <span className="text-sm font-medium text-green-600 group-hover:text-green-700 group-hover:scale-105 transition-all duration-300">
                       {metric.change}
                     </span>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm font-medium text-gray-600">
+                    <p className="text-sm font-medium text-gray-600 group-hover:text-gray-800 transition-colors duration-300">
                       {metric.title}
                     </p>
-                    <p className={`text-2xl font-bold ${metric.color}`}>
+                    <p className={`text-2xl font-bold ${metric.color} group-hover:scale-105 transition-transform duration-300`}>
                       {metric.value}
                     </p>
                   </div>
+                  
+                  {/* Floating particles */}
+                  <div className="absolute top-2 right-2 w-2 h-2 bg-white/40 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-opacity duration-500"></div>
+                  <div className="absolute bottom-2 left-2 w-1.5 h-1.5 bg-white/30 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-700" style={{ animationDelay: '0.2s' }}></div>
                 </CardContent>
               </Card>
             );

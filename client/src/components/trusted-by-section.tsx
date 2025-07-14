@@ -42,15 +42,21 @@ export function TrustedBySection() {
           {capabilities.map((capability, index) => (
             <div
               key={capability.name}
-              className="flex flex-col items-center justify-center w-full h-24 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 border border-gray-100 group"
+              className="flex flex-col items-center justify-center w-full h-24 p-4 bg-white rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 hover:scale-105 border border-gray-100 group cursor-pointer relative overflow-hidden"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <span className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-200">
+              {/* Background gradient effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <span className="text-2xl mb-2 group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 relative z-10">
                 {capability.icon}
               </span>
-              <span className="text-xs md:text-sm font-medium text-gray-700 text-center">
+              <span className="text-xs md:text-sm font-medium text-gray-700 text-center group-hover:text-gray-900 group-hover:font-semibold transition-all duration-300 relative z-10">
                 {capability.name}
               </span>
+              
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-r from-blue-400 to-purple-400 blur-xl"></div>
             </div>
           ))}
         </div>

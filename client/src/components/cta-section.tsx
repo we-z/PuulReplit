@@ -64,21 +64,25 @@ export function CTASection() {
             <Link href="/subscribe">
               <Button
                 size="lg"
-                className="bg-white text-gray-900 px-8 py-4 text-lg font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-300 group"
+                className="bg-white text-gray-900 px-8 py-4 text-lg font-semibold hover:bg-gray-100 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
                 aria-label="Start pro subscription"
               >
-                Start Pro Subscription
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <span className="relative z-10">
+                  Start Pro Subscription
+                  <ArrowRight className="w-5 h-5 ml-2 inline group-hover:translate-x-2 group-hover:scale-110 transition-all duration-300" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </Button>
             </Link>
             <Link href="/checkout">
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300"
+                className="border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-gray-900 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group relative overflow-hidden"
                 aria-label="One-time setup"
               >
-                One-time Setup
+                <span className="relative z-10">One-time Setup</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-white to-gray-100 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </Button>
             </Link>
           </div>
