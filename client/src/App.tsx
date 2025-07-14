@@ -7,12 +7,16 @@ import { useAuth } from "@/hooks/useAuth";
 import NotFound from "@/pages/not-found";
 import LandingPage from "@/pages/landing";
 import Dashboard from "@/pages/dashboard";
+import Checkout from "@/pages/checkout";
+import Subscribe from "@/pages/subscribe";
 
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
 
   return (
     <Switch>
+      <Route path="/checkout" component={Checkout} />
+      <Route path="/subscribe" component={Subscribe} />
       {isLoading || !isAuthenticated ? (
         <Route path="/" component={LandingPage} />
       ) : (

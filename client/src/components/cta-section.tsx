@@ -1,6 +1,7 @@
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Shield, Users } from "lucide-react";
+import { Link } from "wouter";
 
 export function CTASection() {
   const { ref, isVisible } = useIntersectionObserver();
@@ -60,24 +61,26 @@ export function CTASection() {
           style={{ animationDelay: "0.6s" }}
         >
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-            <Button
-              size="lg"
-              className="bg-white text-gray-900 px-8 py-4 text-lg font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-300 group"
-              aria-label="Start free trial"
-              onClick={() => window.location.href = "/api/login"}
-            >
-              Start Free Trial
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300"
-              aria-label="Schedule demo"
-              onClick={() => window.location.href = "/api/login"}
-            >
-              Schedule Demo
-            </Button>
+            <Link href="/subscribe">
+              <Button
+                size="lg"
+                className="bg-white text-gray-900 px-8 py-4 text-lg font-semibold hover:bg-gray-100 hover:scale-105 transition-all duration-300 group"
+                aria-label="Start pro subscription"
+              >
+                Start Pro Subscription
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
+            <Link href="/checkout">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-white text-white px-8 py-4 text-lg font-semibold hover:bg-white hover:text-gray-900 hover:scale-105 transition-all duration-300"
+                aria-label="One-time setup"
+              >
+                One-time Setup
+              </Button>
+            </Link>
           </div>
 
           <p className="text-sm text-gray-400">

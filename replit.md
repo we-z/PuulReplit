@@ -59,6 +59,11 @@ The application uses a monorepo pattern with three main directories:
 - Real-time dashboard mockups with Chart.js integration
 - SEO optimized with meta tags and semantic HTML
 - Full PostgreSQL database integration with comprehensive property management schema
+- **NEW: Stripe Payment Processing**
+  - One-time payment integration for property setup fees
+  - Subscription management for Pro features ($49/month)
+  - Secure payment processing with Stripe Elements
+  - Customer and subscription tracking in database
 
 ## Data Flow
 
