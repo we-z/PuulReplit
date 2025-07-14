@@ -34,7 +34,7 @@ export function TrustedBySection() {
         </div>
 
         <div
-          className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center fade-in-up ${
+          className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 items-center justify-items-center fade-in-up ${
             isVisible ? "visible" : ""
           }`}
           style={{ animationDelay: "0.4s" }}
@@ -42,10 +42,10 @@ export function TrustedBySection() {
           {logos.map((company, index) => (
             <div
               key={company.name}
-              className="flex items-center justify-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105"
+              className="flex items-center justify-center w-full h-20 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 border border-gray-100"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <span className="text-lg md:text-xl font-bold text-gray-700 text-center">
+              <span className="text-sm md:text-base lg:text-lg font-bold text-gray-700 text-center whitespace-nowrap">
                 {company.name}
               </span>
             </div>
@@ -59,17 +59,17 @@ export function TrustedBySection() {
           }`}
           style={{ animationDelay: "0.6s" }}
         >
-          <div className="text-center">
-            <div className="text-4xl font-bold text-gray-900 mb-2">500+</div>
-            <div className="text-gray-600">Property Managers</div>
+          <div className="text-center bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">500+</div>
+            <div className="text-gray-600 font-medium">Property Managers</div>
           </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-gray-900 mb-2">50K+</div>
-            <div className="text-gray-600">Properties Managed</div>
+          <div className="text-center bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">50K+</div>
+            <div className="text-gray-600 font-medium">Properties Managed</div>
           </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold text-gray-900 mb-2">$2.8B</div>
-            <div className="text-gray-600">Assets Under Management</div>
+          <div className="text-center bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">$2.8B</div>
+            <div className="text-gray-600 font-medium">Assets Under Management</div>
           </div>
         </div>
       </div>
