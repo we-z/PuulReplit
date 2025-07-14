@@ -42,12 +42,12 @@ export function TrustedBySection() {
           {logos.map((company, index) => (
             <div
               key={company.name}
-              className="flex items-center justify-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="flex items-center justify-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <div className="w-16 h-16 bg-gray-900 text-white rounded-lg flex items-center justify-center text-lg font-bold">
-                {company.logo}
-              </div>
+              <span className="text-lg md:text-xl font-bold text-gray-700 text-center">
+                {company.name}
+              </span>
             </div>
           ))}
         </div>
