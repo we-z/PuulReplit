@@ -27,7 +27,7 @@ export function CTASection() {
             }`}
             style={{ animationDelay: "0.2s" }}
           >
-            Join 500+ property managers who have already upgraded to AI-powered operations
+            Experience the future of property management with intelligent automation and insights
           </p>
         </div>
 
@@ -84,11 +84,11 @@ export function CTASection() {
           </div>
 
           <p className="text-sm text-gray-400">
-            No credit card required • 14-day free trial • Cancel anytime
+            Early access pricing • Full-featured demo available • Cancel anytime
           </p>
         </div>
 
-        {/* Stats */}
+        {/* Technology Stack */}
         <div
           className={`grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-white/10 fade-in-up ${
             isVisible ? "visible" : ""
@@ -96,16 +96,16 @@ export function CTASection() {
           style={{ animationDelay: "0.8s" }}
         >
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>
-            <div className="text-gray-400">Property Managers</div>
+            <div className="text-2xl md:text-3xl font-bold text-white mb-2">Machine Learning</div>
+            <div className="text-gray-400">Predictive Analytics Engine</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2">50K+</div>
-            <div className="text-gray-400">Properties Managed</div>
+            <div className="text-2xl md:text-3xl font-bold text-white mb-2">Real-time Data</div>
+            <div className="text-gray-400">Live Property Monitoring</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2">$2.8B</div>
-            <div className="text-gray-400">Assets Under Management</div>
+            <div className="text-2xl md:text-3xl font-bold text-white mb-2">Cloud Native</div>
+            <div className="text-gray-400">Scalable Infrastructure</div>
           </div>
         </div>
       </div>

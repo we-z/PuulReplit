@@ -3,17 +3,17 @@ import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 export function TrustedBySection() {
   const { ref, isVisible } = useIntersectionObserver();
 
-  const logos = [
-    { name: "CBRE", logo: "CBRE" },
-    { name: "JLL", logo: "JLL" },
-    { name: "Cushman & Wakefield", logo: "C&W" },
-    { name: "Colliers", logo: "COL" },
-    { name: "Newmark", logo: "NMK" },
-    { name: "Avison Young", logo: "AY" },
+  const capabilities = [
+    { name: "Predictive Maintenance", icon: "🔧" },
+    { name: "AI Analytics", icon: "📊" },
+    { name: "Dynamic Pricing", icon: "💰" },
+    { name: "Portfolio Management", icon: "🏢" },
+    { name: "Tenant Relations", icon: "👥" },
+    { name: "Cost Optimization", icon: "📈" },
   ];
 
   return (
-    <section ref={ref} className="py-16 bg-gray-50" id="trusted-by">
+    <section ref={ref} className="py-16 bg-gray-50" id="capabilities">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2
@@ -21,7 +21,7 @@ export function TrustedBySection() {
               isVisible ? "visible" : ""
             }`}
           >
-            Trusted by Industry Leaders
+            Built for Modern Property Management
           </h2>
           <p
             className={`text-lg text-gray-600 max-w-2xl mx-auto fade-in-up ${
@@ -29,7 +29,7 @@ export function TrustedBySection() {
             }`}
             style={{ animationDelay: "0.2s" }}
           >
-            Over 500+ property management companies trust Puul to optimize their operations
+            Comprehensive AI-powered features designed to streamline every aspect of property operations
           </p>
         </div>
 
@@ -39,20 +39,23 @@ export function TrustedBySection() {
           }`}
           style={{ animationDelay: "0.4s" }}
         >
-          {logos.map((company, index) => (
+          {capabilities.map((capability, index) => (
             <div
-              key={company.name}
-              className="flex items-center justify-center w-full h-20 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 border border-gray-100"
+              key={capability.name}
+              className="flex flex-col items-center justify-center w-full h-24 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 border border-gray-100 group"
               style={{ animationDelay: `${0.1 * index}s` }}
             >
-              <span className="text-sm md:text-base lg:text-lg font-bold text-gray-700 text-center whitespace-nowrap">
-                {company.name}
+              <span className="text-2xl mb-2 group-hover:scale-110 transition-transform duration-200">
+                {capability.icon}
+              </span>
+              <span className="text-xs md:text-sm font-medium text-gray-700 text-center">
+                {capability.name}
               </span>
             </div>
           ))}
         </div>
 
-        {/* Statistics */}
+        {/* Value Propositions */}
         <div
           className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 fade-in-up ${
             isVisible ? "visible" : ""
@@ -60,16 +63,16 @@ export function TrustedBySection() {
           style={{ animationDelay: "0.6s" }}
         >
           <div className="text-center bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">500+</div>
-            <div className="text-gray-600 font-medium">Property Managers</div>
+            <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">AI-Powered</div>
+            <div className="text-gray-600 font-medium">Intelligent Decision Making</div>
           </div>
           <div className="text-center bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">50K+</div>
-            <div className="text-gray-600 font-medium">Properties Managed</div>
+            <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">24/7</div>
+            <div className="text-gray-600 font-medium">Continuous Monitoring</div>
           </div>
           <div className="text-center bg-white rounded-lg p-6 shadow-sm border border-gray-100">
-            <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">$2.8B</div>
-            <div className="text-gray-600 font-medium">Assets Under Management</div>
+            <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">Real-time</div>
+            <div className="text-gray-600 font-medium">Data & Insights</div>
           </div>
         </div>
       </div>

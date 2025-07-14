@@ -8,46 +8,37 @@ export function TestimonialsSection() {
   const { ref, isVisible } = useIntersectionObserver();
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const testimonials = [
+  const features = [
     {
-      quote: "Puul's AI has revolutionized our maintenance operations. We've reduced emergency repairs by 60% and our tenants couldn't be happier.",
-      author: "Sarah Chen",
-      position: "VP of Operations",
-      company: "Metropolitan Properties",
-      rating: 5,
-      metrics: "60% reduction in emergency repairs",
-      avatar: "SC",
+      title: "Predictive Maintenance AI",
+      description: "Advanced machine learning algorithms analyze property systems to predict maintenance needs before issues occur, preventing costly emergency repairs and tenant disruption.",
+      icon: "🔧",
       color: "from-blue-600 to-blue-700",
+      benefits: ["Early problem detection", "Cost prevention", "Tenant satisfaction"]
     },
     {
-      quote: "The dynamic pricing feature increased our portfolio revenue by 22% in just six months. The ROI is incredible.",
-      author: "Michael Rodriguez", 
-      position: "Portfolio Manager",
-      company: "Urban Living Corp",
-      rating: 5,
-      metrics: "22% revenue increase in 6 months",
-      avatar: "MR",
+      title: "Dynamic Pricing Engine",
+      description: "Intelligent pricing optimization that adjusts rental rates based on real-time market data, seasonal trends, and property-specific factors.",
+      icon: "💰", 
       color: "from-green-600 to-green-700",
+      benefits: ["Market-responsive pricing", "Revenue optimization", "Competitive positioning"]
     },
     {
-      quote: "The real-time analytics dashboard gives us insights we never had before. Data-driven decisions are now the norm.",
-      author: "Emma Thompson",
-      position: "Regional Director",
-      company: "Prime Real Estate",
-      rating: 5,
-      metrics: "100% data-driven decision making",
-      avatar: "ET",
+      title: "Portfolio Analytics Dashboard",
+      description: "Comprehensive real-time insights across your entire property portfolio with actionable recommendations and performance tracking.",
+      icon: "📊",
       color: "from-purple-600 to-purple-700",
+      benefits: ["Real-time monitoring", "Data-driven decisions", "Performance insights"]
     },
   ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+    setCurrentSlide((prev) => (prev + 1) % features.length);
   };
 
   const prevSlide = () => {
     setCurrentSlide(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      (prev) => (prev - 1 + features.length) % features.length
     );
   };
 
@@ -62,7 +53,7 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="py-20 bg-white" id="testimonials">
+    <section ref={ref} className="py-20 bg-white" id="features">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
@@ -70,7 +61,7 @@ export function TestimonialsSection() {
               isVisible ? "visible" : ""
             }`}
           >
-            What Our Customers Say
+            AI-Powered Property Management
           </h2>
           <p
             className={`text-lg md:text-xl text-gray-600 max-w-3xl mx-auto fade-in-up ${
@@ -78,11 +69,11 @@ export function TestimonialsSection() {
             }`}
             style={{ animationDelay: "0.2s" }}
           >
-            See how top property managers are transforming their operations with measurable results
+            Advanced machine learning capabilities designed to optimize every aspect of property operations
           </p>
         </div>
 
-        {/* Featured Testimonial */}
+        {/* Featured Feature */}
         <div
           className={`relative mb-16 fade-in-up ${isVisible ? "visible" : ""}`}
           style={{ animationDelay: "0.4s" }}
@@ -91,33 +82,31 @@ export function TestimonialsSection() {
             <CardContent className="p-8 md:p-12">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="flex-1">
-                  <Quote className="w-12 h-12 text-white/30 mb-6" />
-                  <blockquote className="text-xl md:text-2xl font-light mb-8 leading-relaxed">
-                    "{testimonials[currentSlide].quote}"
-                  </blockquote>
-                  
-                  {/* Rating */}
-                  <div className="flex items-center space-x-1 mb-6">
-                    {[...Array(testimonials[currentSlide].rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
+                  <div className="text-6xl mb-6">{features[currentSlide].icon}</div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-6 leading-relaxed">
+                    {features[currentSlide].title}
+                  </h3>
+                  <p className="text-lg text-white/90 mb-8 leading-relaxed">
+                    {features[currentSlide].description}
+                  </p>
 
-                  {/* Metrics */}
-                  <div className="bg-white/10 rounded-lg p-4 mb-6">
-                    <div className="text-sm text-white/70 mb-1">Key Result</div>
-                    <div className="text-lg font-semibold">{testimonials[currentSlide].metrics}</div>
+                  {/* Benefits */}
+                  <div className="bg-white/10 rounded-lg p-6">
+                    <div className="text-sm text-white/70 mb-3">Key Benefits</div>
+                    <div className="space-y-2">
+                      {features[currentSlide].benefits.map((benefit, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                          <span className="text-white/90">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex-shrink-0">
-                  <div className={`w-20 h-20 bg-gradient-to-r ${testimonials[currentSlide].color} rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4`}>
-                    {testimonials[currentSlide].avatar}
-                  </div>
-                  <div className="text-center">
-                    <div className="text-lg font-bold">{testimonials[currentSlide].author}</div>
-                    <div className="text-white/70 text-sm">{testimonials[currentSlide].position}</div>
-                    <div className="text-white/70 text-sm">{testimonials[currentSlide].company}</div>
+                  <div className={`w-32 h-32 bg-gradient-to-r ${features[currentSlide].color} rounded-2xl flex items-center justify-center text-white text-4xl mb-6 shadow-2xl`}>
+                    {features[currentSlide].icon}
                   </div>
                 </div>
               </div>
@@ -129,21 +118,21 @@ export function TestimonialsSection() {
                   size="sm"
                   onClick={prevSlide}
                   className="bg-white/10 border-white/20 text-white hover:bg-white/20"
-                  aria-label="Previous testimonial"
+                  aria-label="Previous feature"
                 >
                   <ChevronLeft className="w-4 h-4 mr-2" />
                   Previous
                 </Button>
 
                 <div className="flex space-x-2">
-                  {testimonials.map((_, index) => (
+                  {features.map((_, index) => (
                     <button
                       key={index}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         index === currentSlide ? "bg-white" : "bg-white/30"
                       }`}
                       onClick={() => goToSlide(index)}
-                      aria-label={`Go to testimonial ${index + 1}`}
+                      aria-label={`Go to feature ${index + 1}`}
                     />
                   ))}
                 </div>
@@ -153,7 +142,7 @@ export function TestimonialsSection() {
                   size="sm"
                   onClick={nextSlide}
                   className="bg-white/10 border-white/20 text-white hover:bg-white/20"
-                  aria-label="Next testimonial"
+                  aria-label="Next feature"
                 >
                   Next
                   <ChevronRight className="w-4 h-4 ml-2" />
@@ -163,36 +152,35 @@ export function TestimonialsSection() {
           </Card>
         </div>
 
-        {/* All Testimonials Grid */}
+        {/* All Features Grid */}
         <div
           className={`grid grid-cols-1 md:grid-cols-3 gap-8 fade-in-up ${isVisible ? "visible" : ""}`}
           style={{ animationDelay: "0.6s" }}
         >
-          {testimonials.map((testimonial, index) => (
+          {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="border-2 border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-lg cursor-pointer"
+              className="border-2 border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-lg cursor-pointer group"
               onClick={() => goToSlide(index)}
             >
               <CardContent className="p-6">
-                <div className="flex items-center space-x-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
+                <div className={`w-16 h-16 bg-gradient-to-r ${feature.color} rounded-xl flex items-center justify-center text-white text-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                  {feature.icon}
                 </div>
                 
-                <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">
-                  "{testimonial.quote}"
+                <h3 className="font-bold text-gray-900 text-lg mb-3">{feature.title}</h3>
+                
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed">
+                  {feature.description}
                 </p>
                 
-                <div className="flex items-center space-x-3">
-                  <div className={`w-10 h-10 bg-gradient-to-r ${testimonial.color} rounded-full flex items-center justify-center text-white text-sm font-bold`}>
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900 text-sm">{testimonial.author}</div>
-                    <div className="text-gray-500 text-xs">{testimonial.company}</div>
-                  </div>
+                <div className="space-y-1">
+                  {feature.benefits.map((benefit, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-xs text-gray-500">
+                      <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                      <span>{benefit}</span>
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
