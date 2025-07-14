@@ -32,8 +32,8 @@ export function HeroSection() {
             isVisible ? "visible" : ""
           }`}
         >
-          AI for Property{" "}
-          <span className="block text-gray-700">Managers</span>
+          Enterprise AI for{" "}
+          <span className="block text-gray-700">Real Estate Operations</span>
         </h1>
 
         <p
@@ -42,9 +42,7 @@ export function HeroSection() {
           }`}
           style={{ animationDelay: "0.2s" }}
         >
-          Transform your property management with enterprise-grade AI. Predictive
-          maintenance, dynamic pricing, and real-time insights for modern property
-          portfolios.
+          Enterprise-grade AI platform that scales with your portfolio. Automate operations, optimize performance, and maximize ROI across thousands of properties.
         </p>
 
         <div
@@ -56,20 +54,20 @@ export function HeroSection() {
           <Button
             size="lg"
             className="bg-black text-white px-8 py-4 text-lg font-semibold hover:scale-105 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group relative overflow-hidden"
-            aria-label="Start free trial"
+            aria-label="Request enterprise demo"
             onClick={() => window.location.href = "/api/login"}
           >
-            <span className="relative z-10">Start Free Trial</span>
+            <span className="relative z-10">Request Demo</span>
             <div className="absolute inset-0 bg-gradient-to-r from-gray-800 to-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           </Button>
           <Button
             size="lg"
             variant="outline"
             className="border-2 border-black text-black px-8 py-4 text-lg font-semibold hover:bg-black hover:text-white hover:scale-105 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group relative overflow-hidden"
-            aria-label="View live demo"
+            aria-label="Contact sales team"
             onClick={() => window.location.href = "/api/login"}
           >
-            <span className="relative z-10">View Demo</span>
+            <span className="relative z-10">Contact Sales</span>
             <div className="absolute inset-0 bg-gradient-to-r from-black to-gray-800 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           </Button>
         </div>
@@ -87,9 +85,9 @@ export function HeroSection() {
                 🤖
               </div>
               <div className="text-lg font-bold text-black group-hover:text-blue-600 transition-colors duration-300">
-                Machine Learning
+                Enterprise Scale
               </div>
-              <div className="text-gray-600 text-sm">Advanced AI algorithms</div>
+              <div className="text-gray-600 text-sm">Unlimited properties</div>
               <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
             </CardContent>
           </Card>
@@ -105,9 +103,9 @@ export function HeroSection() {
                 ⚡
               </div>
               <div className="text-lg font-bold text-black group-hover:text-green-600 transition-colors duration-300">
-                Real-time Analytics
+                Enterprise Security
               </div>
-              <div className="text-gray-600 text-sm">Live property insights</div>
+              <div className="text-gray-600 text-sm">SOC 2 Type II compliance</div>
               <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-gradient-to-br from-green-400/20 to-yellow-400/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
             </CardContent>
           </Card>
@@ -123,9 +121,9 @@ export function HeroSection() {
                 🔮
               </div>
               <div className="text-lg font-bold text-black group-hover:text-purple-600 transition-colors duration-300">
-                Predictive Intelligence
+                Custom Deployment
               </div>
-              <div className="text-gray-600 text-sm">Future-focused decisions</div>
+              <div className="text-gray-600 text-sm">On-premise or cloud</div>
               <div className="absolute -bottom-2 -right-2 w-20 h-20 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-500"></div>
             </CardContent>
           </Card>

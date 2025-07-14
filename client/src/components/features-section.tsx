@@ -8,26 +8,26 @@ export function FeaturesSection() {
   const features = [
     {
       icon: Settings,
-      title: "Predictive Maintenance",
-      description: "AI algorithms predict equipment failures before they happen, reducing downtime by 40% and maintenance costs by 25%.",
-      benefits: ["40% less downtime", "25% cost reduction", "Proactive alerts"],
-      metric: "94% HVAC Health Score",
+      title: "AI Operations Center",
+      description: "Centralized command center that automates critical property operations across your entire portfolio with machine learning algorithms.",
+      benefits: ["Cross-portfolio automation", "Predictive maintenance", "Operational intelligence"],
+      metric: "Enterprise Dashboard",
       color: "from-blue-600 to-blue-800",
     },
     {
       icon: TrendingUp,
-      title: "Dynamic Pricing",
-      description: "Real-time market analysis and ML models optimize rental prices, increasing revenue by up to 18% while maintaining high occupancy.",
-      benefits: ["18% revenue increase", "Real-time optimization", "Market analysis"],
-      metric: "$3,850 Current Rate (+12%)",
+      title: "Revenue Optimization Engine",
+      description: "Advanced pricing algorithms analyze market data, competitor rates, and demand patterns to maximize revenue across all properties.",
+      benefits: ["Dynamic pricing at scale", "Market intelligence", "Revenue forecasting"],
+      metric: "Portfolio-Wide Optimization",
       color: "from-green-600 to-green-800",
     },
     {
       icon: BarChart3,
-      title: "Portfolio Analytics",
-      description: "Comprehensive dashboards provide deep insights into portfolio performance, tenant behavior, and market trends.",
-      benefits: ["Real-time insights", "Tenant behavior analysis", "Market trends"],
-      metric: "97.2% Occupancy Rate",
+      title: "Enterprise Intelligence Platform",
+      description: "Real-time analytics and reporting suite designed for enterprise decision-makers managing large property portfolios.",
+      benefits: ["Executive dashboards", "Custom reporting", "Performance benchmarking"],
+      metric: "Multi-Property Analytics",
       color: "from-purple-600 to-purple-800",
     },
   ];
@@ -41,7 +41,7 @@ export function FeaturesSection() {
               isVisible ? "visible" : ""
             }`}
           >
-            AI-Powered Property Management
+            Enterprise-Grade AI Solutions
           </h2>
           <p
             className={`text-lg md:text-xl text-gray-600 max-w-3xl mx-auto fade-in-up ${
@@ -49,7 +49,7 @@ export function FeaturesSection() {
             }`}
             style={{ animationDelay: "0.2s" }}
           >
-            Leverage advanced machine learning to optimize every aspect of your property operations
+            Scale operations across unlimited properties with enterprise-grade AI that delivers measurable ROI
           </p>
         </div>
 

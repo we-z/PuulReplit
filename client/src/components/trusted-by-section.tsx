@@ -4,12 +4,12 @@ export function TrustedBySection() {
   const { ref, isVisible } = useIntersectionObserver();
 
   const capabilities = [
-    { name: "Predictive Maintenance", icon: "🔧" },
-    { name: "AI Analytics", icon: "📊" },
-    { name: "Dynamic Pricing", icon: "💰" },
-    { name: "Portfolio Management", icon: "🏢" },
-    { name: "Tenant Relations", icon: "👥" },
-    { name: "Cost Optimization", icon: "📈" },
+    { name: "Enterprise Security", icon: "🔒" },
+    { name: "Multi-Tenant Architecture", icon: "🏗️" },
+    { name: "Custom Integrations", icon: "🔗" },
+    { name: "Advanced Analytics", icon: "📊" },
+    { name: "Dedicated Support", icon: "🎯" },
+    { name: "SLA Guarantees", icon: "⚡" },
   ];
 
   return (
@@ -21,7 +21,7 @@ export function TrustedBySection() {
               isVisible ? "visible" : ""
             }`}
           >
-            Built for Modern Property Management
+            Enterprise Platform Capabilities
           </h2>
           <p
             className={`text-lg text-gray-600 max-w-2xl mx-auto fade-in-up ${
@@ -29,7 +29,7 @@ export function TrustedBySection() {
             }`}
             style={{ animationDelay: "0.2s" }}
           >
-            Comprehensive AI-powered features designed to streamline every aspect of property operations
+            Comprehensive enterprise features designed to manage and optimize large-scale property portfolios
           </p>
         </div>
 

@@ -9,70 +9,78 @@ export function PricingSection() {
 
   const plans = [
     {
-      name: "Starter",
-      price: "Free",
-      period: "Forever",
-      description: "Perfect for small property managers getting started with AI",
+      name: "Growth",
+      price: "$2.50",
+      period: "per unit/month",
+      minimumUnits: "50",
+      minimumCommitment: "$1,500/month",
+      description: "Ideal for regional property management companies scaling operations",
       features: [
-        "Up to 5 properties",
-        "Basic maintenance tracking",
-        "Email notifications",
-        "Standard reporting",
-        "Community support",
-        "Mobile app access"
+        "50-500 units minimum",
+        "Core AI maintenance prediction",
+        "Automated tenant screening",
+        "Financial analytics & reporting",
+        "Integration with 20+ PMSs", 
+        "Standard support (business hours)",
+        "Mobile & web applications",
+        "Basic customization"
       ],
-      buttonText: "Start Free",
+      buttonText: "Request Demo",
       buttonVariant: "outline" as const,
       popular: false,
       icon: Building2,
-      color: "from-gray-500 to-gray-700",
+      color: "from-blue-500 to-blue-700",
       href: "/api/login"
     },
     {
-      name: "Professional",
-      price: "$49",
-      period: "per month",
-      description: "Advanced AI features for growing property portfolios",
+      name: "Enterprise",
+      price: "$1.95",
+      period: "per unit/month",
+      minimumUnits: "500",
+      minimumCommitment: "$11,700/month",
+      description: "Complete AI platform for large-scale property operations",
       features: [
-        "Up to 50 properties",
-        "AI predictive maintenance",
-        "Dynamic pricing optimization",
-        "Advanced analytics dashboard",
-        "Priority support",
-        "API access",
-        "Custom integrations",
-        "Tenant management",
-        "Financial reporting"
+        "500-5,000+ units",
+        "Full AI automation suite",
+        "Custom ML model training",
+        "Advanced pricing optimization",
+        "White-label deployment",
+        "Dedicated customer success",
+        "Priority 24/7 support",
+        "Custom integrations & APIs",
+        "Advanced security & compliance"
       ],
-      buttonText: "Start 14-Day Trial",
+      buttonText: "Contact Sales",
       buttonVariant: "default" as const,
       popular: true,
       icon: Zap,
-      color: "from-blue-600 to-purple-600",
-      href: "/subscribe"
+      color: "from-purple-600 to-blue-600",
+      href: "/api/login"
     },
     {
-      name: "Enterprise",
-      price: "Custom",
-      period: "Contact us",
-      description: "Comprehensive AI solution for large property management companies",
+      name: "Enterprise Plus",
+      price: "$1.25",
+      period: "per unit/month",
+      minimumUnits: "2,500",
+      minimumCommitment: "$37,500/month",
+      description: "Premium AI solution for institutional-scale property portfolios",
       features: [
-        "Unlimited properties",
-        "Full AI automation suite",
-        "Custom ML models",
-        "White-label solution",
-        "Dedicated account manager",
-        "24/7 premium support",
-        "Custom integrations",
-        "Advanced security",
-        "On-premise deployment",
-        "SLA guarantees"
+        "2,500+ units",
+        "Custom AI development",
+        "On-premise deployment options",
+        "Dedicated technical team",
+        "SLA guarantees (99.9% uptime)",
+        "Executive business reviews",
+        "Custom training & onboarding",
+        "Advanced data analytics",
+        "Multi-tenant architecture",
+        "Enterprise-grade security"
       ],
-      buttonText: "Contact Sales",
+      buttonText: "Schedule Consultation",
       buttonVariant: "outline" as const,
       popular: false,
       icon: Star,
-      color: "from-purple-600 to-pink-600",
+      color: "from-gray-700 to-black",
       href: "/api/login"
     }
   ];
@@ -86,7 +94,7 @@ export function PricingSection() {
               isVisible ? "visible" : ""
             }`}
           >
-            Choose Your AI-Powered Plan
+            Enterprise Pricing by Scale
           </h2>
           <p
             className={`text-lg md:text-xl text-gray-600 max-w-3xl mx-auto fade-in-up ${
@@ -94,7 +102,7 @@ export function PricingSection() {
             }`}
             style={{ animationDelay: "0.2s" }}
           >
-            Scale your property management with the right AI tools for your portfolio size
+            Unit-based pricing that scales with your portfolio. Lower per-unit costs as you grow. Enterprise minimums ensure dedicated support and infrastructure.
           </p>
         </div>
 
@@ -143,13 +151,16 @@ export function PricingSection() {
                         <span className="text-4xl font-bold text-gray-900 group-hover:scale-105 transition-transform duration-300">
                           {plan.price}
                         </span>
-                        {plan.period !== "Forever" && plan.period !== "Contact us" && (
-                          <span className="text-gray-600 ml-2">/{plan.period}</span>
-                        )}
+                        <span className="text-gray-600 ml-2">{plan.period}</span>
                       </div>
-                      {plan.period === "Forever" || plan.period === "Contact us" ? (
-                        <p className="text-gray-600 text-sm mt-1">{plan.period}</p>
-                      ) : null}
+                      <div className="mt-2 space-y-1">
+                        <p className="text-gray-600 text-sm">
+                          {plan.minimumUnits}+ units minimum
+                        </p>
+                        <p className="text-gray-800 text-sm font-medium">
+                          Starting at {plan.minimumCommitment}
+                        </p>
+                      </div>
                     </div>
                   </div>
 
@@ -211,24 +222,24 @@ export function PricingSection() {
                 <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Check className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">14-Day Free Trial</h4>
-                <p className="text-gray-600 text-sm">No credit card required for Professional plan trial</p>
+                <h4 className="font-semibold text-gray-900 mb-2">Enterprise Onboarding</h4>
+                <p className="text-gray-600 text-sm">Dedicated implementation team and 90-day rollout plan</p>
               </div>
               
               <div className="text-center group">
                 <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Zap className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Cancel Anytime</h4>
-                <p className="text-gray-600 text-sm">No long-term contracts or cancellation fees</p>
+                <h4 className="font-semibold text-gray-900 mb-2">Annual Contracts</h4>
+                <p className="text-gray-600 text-sm">Volume discounts available for multi-year commitments</p>
               </div>
               
               <div className="text-center group">
                 <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Star className="w-6 h-6 text-white" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">Premium Support</h4>
-                <p className="text-gray-600 text-sm">Expert assistance when you need it most</p>
+                <h4 className="font-semibold text-gray-900 mb-2">ROI Guarantee</h4>
+                <p className="text-gray-600 text-sm">Measurable 15%+ operational efficiency improvements in Year 1</p>
               </div>
             </div>
           </div>

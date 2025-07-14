@@ -15,9 +15,9 @@ export function CTASection() {
               isVisible ? "visible" : ""
             }`}
           >
-            Ready to Transform Your
+            Scale Your Enterprise
             <span className="block text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text">
-              Property Management?
+              Operations Today
             </span>
           </h2>
 
@@ -27,7 +27,7 @@ export function CTASection() {
             }`}
             style={{ animationDelay: "0.2s" }}
           >
-            Experience the future of property management with intelligent automation and insights
+            Transform your property portfolio with enterprise-grade AI. Our dedicated implementation team delivers measurable ROI across your entire operation.
           </p>
         </div>
 
@@ -40,18 +40,18 @@ export function CTASection() {
         >
           <div className="text-center">
             <Zap className="w-12 h-12 text-yellow-400 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">Quick Setup</h3>
-            <p className="text-gray-400 text-sm">Get started in under 5 minutes with our guided onboarding</p>
+            <h3 className="text-lg font-semibold mb-2">90-Day Implementation</h3>
+            <p className="text-gray-400 text-sm">Dedicated implementation team with structured enterprise rollout</p>
           </div>
           <div className="text-center">
             <Shield className="w-12 h-12 text-green-400 mx-auto mb-4" />
             <h3 className="text-lg font-semibold mb-2">Enterprise Security</h3>
-            <p className="text-gray-400 text-sm">Bank-level encryption and SOC 2 Type II compliance</p>
+            <p className="text-gray-400 text-sm">SOC 2 Type II compliance with on-premise deployment options</p>
           </div>
           <div className="text-center">
             <Users className="w-12 h-12 text-blue-400 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">24/7 Support</h3>
-            <p className="text-gray-400 text-sm">Dedicated customer success team to ensure your success</p>
+            <h3 className="text-lg font-semibold mb-2">Dedicated Support</h3>
+            <p className="text-gray-400 text-sm">Account manager and technical team with SLA guarantees</p>
           </div>
         </div>
 

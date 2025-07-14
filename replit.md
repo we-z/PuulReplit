@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a full-stack web application built for AI-powered property management. The project follows a modern monorepo structure with a React frontend, Express.js backend, and PostgreSQL database using Drizzle ORM. The application is currently set up as a marketing landing page for "Puul," showcasing AI property management features like predictive maintenance, dynamic pricing, and portfolio analytics.
+This is a full-stack web application built for enterprise AI-powered property management. The project follows a modern monorepo structure with a React frontend, Express.js backend, and PostgreSQL database using Drizzle ORM. The application is positioned as "Puul," an enterprise software platform targeting large property management companies with unit-based pricing and comprehensive AI automation features.
 
 ## User Preferences
 
@@ -52,18 +52,24 @@ The application uses a monorepo pattern with three main directories:
 - **Responsive Design**: Mobile-first approach with Tailwind breakpoints
 
 ### Current Application Features
-- **Honest Marketing Landing Page** - Showcases product capabilities without false metrics
+- **Enterprise Marketing Landing Page** - Positioned as enterprise software for large property management companies
 - Beautiful property imagery with elegant parallax effects throughout
 - Animated components with intersection observers  
-- **Interactive Feature Showcase** - Carousel highlighting AI capabilities instead of fake testimonials
+- **Enterprise Feature Showcase** - Highlighting enterprise-grade AI capabilities and scale
 - Real-time dashboard mockups with Chart.js integration
 - SEO optimized with meta tags and semantic HTML
 - Full PostgreSQL database integration with comprehensive property management schema
-- **Stripe Payment Processing**
-  - One-time payment integration for property setup fees
-  - Subscription management for Pro features ($49/month)
-  - Secure payment processing with Stripe Elements
-  - Customer and subscription tracking in database
+- **Enterprise Unit-Based Pricing Model**
+  - Growth tier: $2.50/unit/month (50+ units minimum, $1,500/month starting)
+  - Enterprise tier: $1.95/unit/month (500+ units minimum, $11,700/month starting)
+  - Enterprise Plus tier: $1.25/unit/month (2,500+ units minimum, $37,500/month starting)
+  - Pricing scales down per unit as volume increases
+  - Enterprise minimums ensure dedicated support and infrastructure
+- **Enterprise-Focused Messaging**
+  - Dedicated implementation teams with 90-day rollout plans
+  - SOC 2 Type II compliance and enterprise security
+  - Custom integrations, white-label deployment options
+  - SLA guarantees and dedicated account management
 - **Enhanced Mobile Experience**
   - Smooth dropdown menu animations
   - Improved alignment and visual hierarchy
