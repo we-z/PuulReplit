@@ -5,6 +5,7 @@ import { TrustedBySection } from "@/components/trusted-by-section";
 import { FeaturesSection } from "@/components/features-section";
 import { DashboardSection } from "@/components/dashboard-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
+import { PricingSection } from "@/components/pricing-section";
 import { CTASection } from "@/components/cta-section";
 import { Footer } from "@/components/footer";
 
@@ -65,6 +66,7 @@ export default function LandingPage() {
         <FeaturesSection />
         <DashboardSection />
         <TestimonialsSection />
+        <PricingSection />
         <CTASection />
       </main>
       <Footer />

@@ -38,10 +38,10 @@ export function NavHeader() {
               Dashboard
             </button>
             <button
-              onClick={() => scrollToSection("testimonials")}
+              onClick={() => scrollToSection("pricing")}
               className="text-gray-700 hover:text-black hover:scale-105 transition-all duration-300 font-medium"
             >
-              Testimonials
+              Pricing
             </button>
           </nav>
 
@@ -98,10 +98,10 @@ export function NavHeader() {
               Dashboard
             </button>
             <button
-              onClick={() => scrollToSection("testimonials")}
+              onClick={() => scrollToSection("pricing")}
               className="text-gray-700 hover:text-black font-medium text-left transform hover:translate-x-2 transition-all duration-200"
             >
-              Testimonials
+              Pricing
             </button>
             <div className="flex flex-col space-y-2 pt-4 border-t border-gray-200">
               <Button variant="ghost" className="justify-start hover:translate-x-1 transition-all duration-200">
