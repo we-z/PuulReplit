@@ -4,12 +4,12 @@ export function TrustedBySection() {
   const { ref, isVisible } = useIntersectionObserver();
 
   const logos = [
-    { name: "Metropolitan Properties", logo: "MP" },
-    { name: "Urban Living Corp", logo: "ULC" },
-    { name: "Prime Real Estate", logo: "PRE" },
-    { name: "Skyline Management", logo: "SM" },
-    { name: "Elite Properties", logo: "EP" },
-    { name: "Summit Holdings", logo: "SH" },
+    { name: "CBRE", logo: "CBRE" },
+    { name: "JLL", logo: "JLL" },
+    { name: "Cushman & Wakefield", logo: "C&W" },
+    { name: "Colliers", logo: "COL" },
+    { name: "Newmark", logo: "NMK" },
+    { name: "Avison Young", logo: "AY" },
   ];
 
   return (
