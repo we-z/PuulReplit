@@ -35,13 +35,15 @@ The application uses a monorepo pattern with three main directories:
 ### Database Layer
 - **ORM**: Drizzle with PostgreSQL dialect
 - **Schema Location**: `shared/schema.ts` for type sharing
-- **Migrations**: Managed through drizzle-kit in `./migrations` directory
+- **Tables**: Users, Properties, Maintenance Requests, Tenants with full relations
+- **Features**: AI insights storage, predictive maintenance, tenant management
+- **Migrations**: Managed through drizzle-kit with `npm run db:push`
 - **Connection**: Uses Neon serverless PostgreSQL driver
 
 ### Authentication & Sessions
 - Session storage configured for PostgreSQL backend
-- Placeholder user schema with username/password fields
-- In-memory storage implementation for development
+- Comprehensive user schema with company information
+- Database storage implementation with full CRUD operations
 
 ### UI Component System
 - **Design System**: shadcn/ui with "new-york" style variant
@@ -51,11 +53,12 @@ The application uses a monorepo pattern with three main directories:
 
 ### Current Application Features
 - Marketing landing page with multiple sections
+- Beautiful property imagery with elegant parallax effects throughout
 - Animated components with intersection observers
-- Parallax scrolling effects
 - Interactive testimonial carousel
 - Real-time dashboard mockups with Chart.js integration
 - SEO optimized with meta tags and semantic HTML
+- Full PostgreSQL database integration with comprehensive property management schema
 
 ## Data Flow
 
