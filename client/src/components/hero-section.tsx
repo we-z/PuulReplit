@@ -57,6 +57,7 @@ export function HeroSection() {
             size="lg"
             className="bg-black text-white px-8 py-4 text-lg font-semibold hover:scale-105 hover:shadow-xl transition-all duration-300"
             aria-label="Start free trial"
+            onClick={() => window.location.href = "/api/login"}
           >
             Start Free Trial
           </Button>
@@ -65,6 +66,7 @@ export function HeroSection() {
             variant="outline"
             className="border-2 border-black text-black px-8 py-4 text-lg font-semibold hover:bg-black hover:text-white hover:scale-105 transition-all duration-300"
             aria-label="View live demo"
+            onClick={() => window.location.href = "/api/login"}
           >
             View Demo
           </Button>

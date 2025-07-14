@@ -1,28 +1,27 @@
-import { 
-  users, 
-  properties, 
-  maintenanceRequests, 
+import {
+  users,
+  properties,
+  maintenanceRequests,
   tenants,
-  type User, 
-  type InsertUser, 
-  type Property, 
+  type User,
+  type UpsertUser,
+  type Property,
   type InsertProperty,
   type MaintenanceRequest,
   type InsertMaintenanceRequest,
   type Tenant,
-  type InsertTenant
+  type InsertTenant,
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, desc } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
-  // User methods
-  getUser(id: number): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  // User methods for Replit Auth
+  getUser(id: string): Promise<User | undefined>;
+  upsertUser(user: UpsertUser): Promise<User>;
   
   // Property methods
-  getPropertiesByUserId(userId: number): Promise<Property[]>;
+  getPropertiesByUserId(userId: string): Promise<Property[]>;
   getProperty(id: number): Promise<Property | undefined>;
   createProperty(property: InsertProperty): Promise<Property>;
   updateProperty(id: number, updates: Partial<InsertProperty>): Promise<Property | undefined>;
@@ -43,32 +42,30 @@ export interface IStorage {
 }
 
 export class DatabaseStorage implements IStorage {
-  // User methods
-  async getUser(id: number): Promise<User | undefined> {
+  // User methods for Replit Auth
+  async getUser(id: string): Promise<User | undefined> {
     const [user] = await db.select().from(users).where(eq(users.id, id));
-    return user || undefined;
+    return user;
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    const [user] = await db.select().from(users).where(eq(users.username, username));
-    return user || undefined;
-  }
-
-  async createUser(insertUser: InsertUser): Promise<User> {
+  async upsertUser(userData: UpsertUser): Promise<User> {
     const [user] = await db
       .insert(users)
-      .values(insertUser)
+      .values(userData)
+      .onConflictDoUpdate({
+        target: users.id,
+        set: {
+          ...userData,
+          updatedAt: new Date(),
+        },
+      })
       .returning();
     return user;
   }
 
   // Property methods
-  async getPropertiesByUserId(userId: number): Promise<Property[]> {
-    return await db
-      .select()
-      .from(properties)
-      .where(eq(properties.userId, userId))
-      .orderBy(desc(properties.createdAt));
+  async getPropertiesByUserId(userId: string): Promise<Property[]> {
+    return await db.select().from(properties).where(eq(properties.userId, userId));
   }
 
   async getProperty(id: number): Promise<Property | undefined> {
@@ -95,7 +92,7 @@ export class DatabaseStorage implements IStorage {
 
   async deleteProperty(id: number): Promise<boolean> {
     const result = await db.delete(properties).where(eq(properties.id, id));
-    return result.rowCount ? result.rowCount > 0 : false;
+    return result.rowCount > 0;
   }
 
   // Maintenance request methods
@@ -103,12 +100,14 @@ export class DatabaseStorage implements IStorage {
     return await db
       .select()
       .from(maintenanceRequests)
-      .where(eq(maintenanceRequests.propertyId, propertyId))
-      .orderBy(desc(maintenanceRequests.createdAt));
+      .where(eq(maintenanceRequests.propertyId, propertyId));
   }
 
   async getMaintenanceRequest(id: number): Promise<MaintenanceRequest | undefined> {
-    const [request] = await db.select().from(maintenanceRequests).where(eq(maintenanceRequests.id, id));
+    const [request] = await db
+      .select()
+      .from(maintenanceRequests)
+      .where(eq(maintenanceRequests.id, id));
     return request || undefined;
   }
 
@@ -120,7 +119,10 @@ export class DatabaseStorage implements IStorage {
     return newRequest;
   }
 
-  async updateMaintenanceRequest(id: number, updates: Partial<InsertMaintenanceRequest>): Promise<MaintenanceRequest | undefined> {
+  async updateMaintenanceRequest(
+    id: number,
+    updates: Partial<InsertMaintenanceRequest>
+  ): Promise<MaintenanceRequest | undefined> {
     const [updatedRequest] = await db
       .update(maintenanceRequests)
       .set(updates)
@@ -131,11 +133,7 @@ export class DatabaseStorage implements IStorage {
 
   // Tenant methods
   async getTenantsByPropertyId(propertyId: number): Promise<Tenant[]> {
-    return await db
-      .select()
-      .from(tenants)
-      .where(eq(tenants.propertyId, propertyId))
-      .orderBy(desc(tenants.createdAt));
+    return await db.select().from(tenants).where(eq(tenants.propertyId, propertyId));
   }
 
   async getTenant(id: number): Promise<Tenant | undefined> {
@@ -162,7 +160,7 @@ export class DatabaseStorage implements IStorage {
 
   async deleteTenant(id: number): Promise<boolean> {
     const result = await db.delete(tenants).where(eq(tenants.id, id));
-    return result.rowCount ? result.rowCount > 0 : false;
+    return result.rowCount > 0;
   }
 }
 
