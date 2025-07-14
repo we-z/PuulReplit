@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { NavHeader } from "@/components/nav-header";
 import { HeroSection } from "@/components/hero-section";
+import { TrustedBySection } from "@/components/trusted-by-section";
 import { FeaturesSection } from "@/components/features-section";
 import { DashboardSection } from "@/components/dashboard-section";
 import { TestimonialsSection } from "@/components/testimonials-section";
@@ -60,6 +61,7 @@ export default function LandingPage() {
       <NavHeader />
       <main>
         <HeroSection />
+        <TrustedBySection />
         <FeaturesSection />
         <DashboardSection />
         <TestimonialsSection />

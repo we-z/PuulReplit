@@ -1,39 +1,43 @@
 import { useState, useEffect } from "react";
 import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
-import { useParallax } from "@/hooks/use-parallax";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star, Quote } from "lucide-react";
 
 export function TestimonialsSection() {
   const { ref, isVisible } = useIntersectionObserver();
-  const parallaxOffset = useParallax(0.15);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const testimonials = [
     {
-      quote:
-        "Puul's AI has revolutionized our maintenance operations. We've reduced emergency repairs by 60% and our tenants couldn't be happier.",
+      quote: "Puul's AI has revolutionized our maintenance operations. We've reduced emergency repairs by 60% and our tenants couldn't be happier.",
       author: "Sarah Chen",
-      position: "VP of Operations, Metropolitan Properties",
-      initials: "SC",
-      bgColor: "bg-gray-800",
+      position: "VP of Operations",
+      company: "Metropolitan Properties",
+      rating: 5,
+      metrics: "60% reduction in emergency repairs",
+      avatar: "SC",
+      color: "from-blue-600 to-blue-700",
     },
     {
-      quote:
-        "The dynamic pricing feature increased our portfolio revenue by 22% in just six months. The ROI is incredible.",
-      author: "Michael Rodriguez",
-      position: "Portfolio Manager, Urban Living Corp",
-      initials: "MR",
-      bgColor: "bg-gray-700",
+      quote: "The dynamic pricing feature increased our portfolio revenue by 22% in just six months. The ROI is incredible.",
+      author: "Michael Rodriguez", 
+      position: "Portfolio Manager",
+      company: "Urban Living Corp",
+      rating: 5,
+      metrics: "22% revenue increase in 6 months",
+      avatar: "MR",
+      color: "from-green-600 to-green-700",
     },
     {
-      quote:
-        "The real-time analytics dashboard gives us insights we never had before. Data-driven decisions are now the norm.",
+      quote: "The real-time analytics dashboard gives us insights we never had before. Data-driven decisions are now the norm.",
       author: "Emma Thompson",
-      position: "Regional Director, Prime Real Estate",
-      initials: "ET",
-      bgColor: "bg-gray-900",
+      position: "Regional Director",
+      company: "Prime Real Estate",
+      rating: 5,
+      metrics: "100% data-driven decision making",
+      avatar: "ET",
+      color: "from-purple-600 to-purple-700",
     },
   ];
 
@@ -58,108 +62,141 @@ export function TestimonialsSection() {
   }, []);
 
   return (
-    <section ref={ref} className="py-20 bg-white relative overflow-hidden" id="testimonials">
-      {/* Elegant Background with Parallax */}
-      <div
-        className="absolute inset-0 parallax-element opacity-5"
-        style={{ transform: `translateY(${parallaxOffset}px)` }}
-      >
-        <img
-          src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&h=1200"
-          alt="Elegant luxury condominium towers with landscaped grounds"
-          className="w-full h-full object-cover"
-        />
-      </div>
+    <section ref={ref} className="py-20 bg-white" id="testimonials">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2
-            className={`text-4xl md:text-5xl font-bold text-black mb-6 fade-in-up ${
+            className={`text-3xl md:text-5xl font-bold text-gray-900 mb-6 fade-in-up ${
               isVisible ? "visible" : ""
             }`}
           >
-            Trusted by Industry Leaders
+            What Our Customers Say
           </h2>
           <p
-            className={`text-xl text-gray-700 max-w-3xl mx-auto fade-in-up ${
+            className={`text-lg md:text-xl text-gray-600 max-w-3xl mx-auto fade-in-up ${
               isVisible ? "visible" : ""
             }`}
             style={{ animationDelay: "0.2s" }}
           >
-            See how property managers are transforming their operations with
-            Puul's AI platform.
+            See how top property managers are transforming their operations with measurable results
           </p>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="overflow-hidden rounded-2xl">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-            >
-              {testimonials.map((testimonial, index) => (
-                <Card
-                  key={index}
-                  className="w-full flex-shrink-0 bg-gray-50 border-0"
+        {/* Featured Testimonial */}
+        <div
+          className={`relative mb-16 fade-in-up ${isVisible ? "visible" : ""}`}
+          style={{ animationDelay: "0.4s" }}
+        >
+          <Card className="bg-gradient-to-r from-gray-900 to-gray-800 text-white overflow-hidden">
+            <CardContent className="p-8 md:p-12">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="flex-1">
+                  <Quote className="w-12 h-12 text-white/30 mb-6" />
+                  <blockquote className="text-xl md:text-2xl font-light mb-8 leading-relaxed">
+                    "{testimonials[currentSlide].quote}"
+                  </blockquote>
+                  
+                  {/* Rating */}
+                  <div className="flex items-center space-x-1 mb-6">
+                    {[...Array(testimonials[currentSlide].rating)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+
+                  {/* Metrics */}
+                  <div className="bg-white/10 rounded-lg p-4 mb-6">
+                    <div className="text-sm text-white/70 mb-1">Key Result</div>
+                    <div className="text-lg font-semibold">{testimonials[currentSlide].metrics}</div>
+                  </div>
+                </div>
+
+                <div className="flex-shrink-0">
+                  <div className={`w-20 h-20 bg-gradient-to-r ${testimonials[currentSlide].color} rounded-full flex items-center justify-center text-white text-2xl font-bold mb-4`}>
+                    {testimonials[currentSlide].avatar}
+                  </div>
+                  <div className="text-center">
+                    <div className="text-lg font-bold">{testimonials[currentSlide].author}</div>
+                    <div className="text-white/70 text-sm">{testimonials[currentSlide].position}</div>
+                    <div className="text-white/70 text-sm">{testimonials[currentSlide].company}</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Navigation */}
+              <div className="flex justify-between items-center mt-8">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={prevSlide}
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                  aria-label="Previous testimonial"
                 >
-                  <CardContent className="p-8 md:p-12">
-                    <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
-                      <div className={`w-24 h-24 rounded-full ${testimonial.bgColor} border-4 border-white shadow-lg hover:scale-105 transition-transform duration-300 flex items-center justify-center`}>
-                        <span className="text-white text-xl font-bold">
-                          {testimonial.initials}
-                        </span>
-                      </div>
-                      <div className="text-center md:text-left">
-                        <blockquote className="text-xl md:text-2xl text-black mb-6 font-medium">
-                          "{testimonial.quote}"
-                        </blockquote>
-                        <div className="text-gray-700">
-                          <div className="font-semibold text-black">
-                            {testimonial.author}
-                          </div>
-                          <div>{testimonial.position}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
+                  <ChevronLeft className="w-4 h-4 mr-2" />
+                  Previous
+                </Button>
 
-          {/* Carousel Navigation */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full hover:scale-125 transition-transform duration-300 ${
-                  index === currentSlide ? "bg-black" : "bg-gray-300"
-                }`}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
+                <div className="flex space-x-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentSlide ? "bg-white" : "bg-white/30"
+                      }`}
+                      onClick={() => goToSlide(index)}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
 
-          {/* Navigation Arrows */}
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
-            aria-label="Previous testimonial"
-          >
-            <ChevronLeft className="w-6 h-6 text-black" />
-          </Button>
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300"
-            aria-label="Next testimonial"
-          >
-            <ChevronRight className="w-6 h-6 text-black" />
-          </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={nextSlide}
+                  className="bg-white/10 border-white/20 text-white hover:bg-white/20"
+                  aria-label="Next testimonial"
+                >
+                  Next
+                  <ChevronRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* All Testimonials Grid */}
+        <div
+          className={`grid grid-cols-1 md:grid-cols-3 gap-8 fade-in-up ${isVisible ? "visible" : ""}`}
+          style={{ animationDelay: "0.6s" }}
+        >
+          {testimonials.map((testimonial, index) => (
+            <Card 
+              key={index} 
+              className="border-2 border-gray-100 hover:border-gray-200 transition-all duration-300 hover:shadow-lg cursor-pointer"
+              onClick={() => goToSlide(index)}
+            >
+              <CardContent className="p-6">
+                <div className="flex items-center space-x-1 mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                
+                <p className="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">
+                  "{testimonial.quote}"
+                </p>
+                
+                <div className="flex items-center space-x-3">
+                  <div className={`w-10 h-10 bg-gradient-to-r ${testimonial.color} rounded-full flex items-center justify-center text-white text-sm font-bold`}>
+                    {testimonial.avatar}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900 text-sm">{testimonial.author}</div>
+                    <div className="text-gray-500 text-xs">{testimonial.company}</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
